@@ -17,24 +17,28 @@ class Signin extends Component {
     this.setState({[name]: value});
   };
   add = () => {
-    var data = {
-      name: this.state.name,
-      image: this.state.image,
-      price: this.state.price,
-      amount: this.state.amount
+    AsyncStorage.getItem("@token")
+        .then(token=> {
+            var data = {
+                token: Number(token),
+                name: this.state.name,
+                image: this.state.image,
+                price: this.state.price,
+                amount: this.state.amount
+            }
+            var options = {
+                method: "POST",
+                body: data,
+                redirect: "follow",
+                headers: myHeaders,
+            }
+            fetch("http://foodstores.herokuapp.com/add/item", options)
+                .then((response) => response.text())
+                .then((result) => {if(result==="added"){this.props.navigation.navigate('Store')}
+                else{this.setState({error:'something went wrong'})}})
+                .catch((error)=>this.setState({error:'something went wrong'}))
+            })
     }
-    var options = {
-      method: "POST",
-      body: data,
-      redirect: "follow",
-      headers: myHeaders,
-    }
-    fetch("http://foodstores.herokuapp.com/add/item", options)
-      .then((response) => response.text())
-      .then((result) => {if(result==="added"){this.props.navigation.navigate('Store')}
-      else{this.setState({error:'something went wrong'})}})
-      .catch((error)=>this.setState({error:'something went wrong'}))
-  }
   render() {
     return (
       <View style={styles.container}>
