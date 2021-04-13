@@ -1,5 +1,5 @@
 import React, { useState, Component } from "react";
-import { StyleSheet, Text, View, Image, FlatList, Button } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from "react-native";
 
 class Home extends Component {
   constructor(props) {
@@ -9,17 +9,20 @@ class Home extends Component {
     };
   }
   componentDidMount(){
-    fetch("http://127.0.0.1:8080/get/stores")
+    fetch("http://foodstores.herokuapp.com/get/stores")
     .then((res)=>res.json())
-    .then((res)=>{console.log(res);this.setState({stores:res})})
+    .then((res)=>{this.setState({stores:res})})
     .catch((error)=>console.error(error))
+  }
+  items=(item)=>{
+    this.props.navigation.navigate("Items",{items:item.items})
   }
   render() {
     return(
     <View style={styles.container}>
       <View style={styles.display}>
-      {this.state.stores?.map((item,i)=>(<Image key={i} style={styles.img}
-            source={{uri:item?.image}} />))}
+      {this.state.stores?.map((item,i)=>(<TouchableOpacity key={i} onPress={(item)=>this.items(item)}><Image style={styles.img}
+            source={{uri:item.image}} /><Text>{item.name}</Text></TouchableOpacity>))}
       </View>
     </View>
     )
@@ -33,16 +36,19 @@ const styles = StyleSheet.create({
   },
   display: {
     display:"flex",
-    justifyContent:"center",
-    alignItems:"center",
+    alignContent:'center',
+    justifyContent:'flex-start',
+    flexDirection:"column",
+    flexWrap:'wrap',
     width:300,
-    height:600,
-    margin:20,
+    height:800,
+    margin:10,
+    textAlign:'center',
   },
   img: {
     borderRadius:12,
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
     margin: 5,
   },
 });

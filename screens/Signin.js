@@ -28,16 +28,15 @@ class Signin extends Component {
       headers: myHeaders,
     };
     fetch(`http://foodstores.herokuapp.com/signin/${this.props.route.params.user}`, requestOptions)
-      .then((response) => response.json())
+      .then((response) => response.text())
       .then((result) => {
-        console.log(result)
-      // if(result.token){
-      //   AsyncStorage.setItem("@token", result.token)
-      //   .then(()=>{AsyncStorage.setItem("@user", this.props.route.params.user)
-      //   .then(() => {this.props.navigation.navigate('Home')})})}
-      //   else{this.setState({error:'wrong username or password!'})}})
-      // .catch((error)=>console.error(error))
-      })
+      if(result?.slice(0,5)==="token"){
+        AsyncStorage.setItem("@token", result)
+        .then(() => {
+          if(this.props.route.params.user==='store'){this.props.navigation.navigate('Store')}else{
+          this.props.navigation.navigate('Restaurant')}})}
+        else{this.setState({error:'wrong username or password!'})}})
+      .catch((error)=>console.error(error))
   };
   signup = () => {
     this.props.navigation.navigate('Signup',{user: this.props.route.params.user})

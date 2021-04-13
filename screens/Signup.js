@@ -13,6 +13,9 @@ class Signup extends Component {
       image:''
     };
   }
+  onchange = (name, value) => {
+    this.setState({[name]: value});
+  };
   signupstore=()=>{
     if(this.state.username.length<2){this.setState({error:'username too short'});return;}
     if(this.state.password.length<2){this.setState({error:'password too short'});return;}
@@ -36,7 +39,7 @@ class Signup extends Component {
       headers: myHeaders,
     };
     fetch("http://foodstores.herokuapp.com/add/store", requestOptions)
-      .then((response) => response.json())
+      .then((response) => response.text())
       .then((result) => {if(result==="store added"){this.props.navigation.navigate('Signin')}
       else{this.setState({error:'username is already taken!'})}})
       .catch((error)=>console.error(error))
@@ -61,13 +64,13 @@ class Signup extends Component {
       headers: myHeaders,
     };
     fetch("http://foodstores.herokuapp.com/add/restaurant", requestOptions)
-      .then((response) => response.json())
-      .then((result) => {if(result==="restaurant added"){this.props.navigation.navigate('Signin')}
+      .then((response) => response.text())
+      .then((result) => {if(result==="added restaurant"){this.props.navigation.navigate('Signin')}
       else{this.setState({error:'username is already taken!'})}})
       .catch((error)=>console.error(error))
   }
   render() {
-    if(this.props.route.params.user==='Restaurant'){
+    if(this.props.route.params.user==='restaurant'){
     return (
       <View style={styles.container}>
         <TextInput
