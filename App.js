@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaProvider } from "react-native-safe-area-context";
 const Stack = createStackNavigator();
 //pages
+import Add from "./screens/Add"
 import Home from "./screens/Home"
 import Item from "./screens/Item"
 import Items from "./screens/Items"
@@ -25,6 +26,7 @@ class App extends React.Component {
       <SafeAreaProvider>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Landing" >
+            <Stack.Screen name="Add" component={Add} options={{title:'',headerStyle: {backgroundColor: 'orange'}}} />
             <Stack.Screen name="Home" component={Home} options={{title:'',headerStyle: {backgroundColor: 'orange'}}} />
             <Stack.Screen name="Item" component={Item} options={{title:'',headerStyle: {backgroundColor: 'orange'}}} />
             <Stack.Screen name="Items" component={Items} options={{title:'',headerStyle: {backgroundColor: 'orange'}}} />
