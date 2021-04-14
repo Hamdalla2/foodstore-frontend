@@ -23,22 +23,22 @@ class Reports extends Component {
     <View style={styles.container}>
       <TouchableOpacity onPress={()=>{}}>
           <Text style={styles.button}>
-            List of Stores
+          All Product
           </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={()=>{}}>
           <Text style={styles.button}>
-            Inventory
+          Low Quantity
           </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={()=>{}}>
           <Text style={styles.button}>
-            Reports
+          Unavailable 
           </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={()=>{AsyncStorage.removeItem("token"); this.props.navigation.navigate("Landing")}}>
             <Text style={styles.button}>
-              Sign Out
+            Rotten
             </Text>
         </TouchableOpacity>
     </View>

@@ -2,7 +2,7 @@ import React, { useState, Component } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-class Products extends Component {
+class Orders extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Products;
+export default Orders;
