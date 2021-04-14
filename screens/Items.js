@@ -27,11 +27,11 @@ const styles = StyleSheet.create({
   item: {
     flex: 1,
     display:"flex",
-    justifyContent:"flex-start",
+    justifyContent:"space-between",
     alignItems:"flex-start",
     flexDirection:'row',
     width:300,
-    height:600,
+    height:100,
     margin:20,
   },
   img: {

@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     borderRadius: 35,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
     marginVertical: 5,
     shadowOffset: { width: 2, height: 2 },
     shadowColor: "black",

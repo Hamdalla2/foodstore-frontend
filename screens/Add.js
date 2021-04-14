@@ -26,8 +26,11 @@ class Signin extends Component {
                 name: this.state.name,
                 image: this.state.image,
                 price: this.state.price,
-                amount: this.state.amount
+                amount: this.state.amount,
             }
+            console.log(data)
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
             var options = {
                 method: "POST",
                 body: JSON.stringify(data),

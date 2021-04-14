@@ -29,7 +29,3 @@ This is an apk for android devices, it aims to connect restaurant owners with po
 - stripe payment
 - build apk
 
-### members ###
-- Hamdallah Fatayer
-- Noor Ashqar
-- Rami Okkeh
