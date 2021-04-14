@@ -1,6 +1,6 @@
 import React, { useState, Component } from "react";
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button } from "react-native";
-
+import UploadButton from "@rpldy/upload-button";
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +16,24 @@ class Signup extends Component {
   onchange = (name, value) => {
     this.setState({[name]: value});
   };
+//   uploadImage = (e) => {
+//     const formData = new FormData()
+//     formData.append('file', e.target.files[0])
+//     formData.append('upload_preset', 'pqcz20rh')
+
+//     const requestOptions = {
+//         method: 'POST',
+//         body: formData
+//     };
+//     fetch('	https://api.cloudinary.com/v1_1/dzjchtsxn/image/upload', requestOptions)
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log(data)
+//             setImage(data.secure_url)
+
+//         });
+
+// }
   signupstore=()=>{
     if(this.state.username.length<2){this.setState({error:'username too short'});return;}
     if(this.state.password.length<2){this.setState({error:'password too short'});return;}
@@ -43,7 +61,7 @@ class Signup extends Component {
       .then((result) => {if(result==="added store"){this.props.navigation.navigate('Signin')}
       else{this.setState({error:'username is already taken!'})}})
       .catch((error)=>console.error(error))
-  }
+    }
   signuprestaurant=()=>{
     if(this.state.username.length<2){this.setState({error:'username too short'});return;}
     if(this.state.password.length<2){this.setState({error:'password too short'});return;}
@@ -85,10 +103,12 @@ class Signup extends Component {
           value={this.state.password}
           onChangeText={(text) =>{this.onchange("password", text)}}
           style={styles.textInput}
+          secureTextEntry={true}
           placeholder="Password"
           placeholderTextColor="black"
           maxLength={30}
         ></TextInput>
+
         <TextInput
             value={this.state.name}
             onChangeText={(text) =>{this.onchange("name", text)}}
@@ -112,10 +132,12 @@ class Signup extends Component {
         <Text style={styles.error}>
           {this.state.error}
         </Text>
+        
       </View>
     )}else{
       return(      
         <View style={styles.container}>
+          {/* <UploadButton>Upload Files</UploadButton> */}
           <TextInput
             value={this.state.username}
             onChangeText={(text) =>{this.onchange("username", text)}}
@@ -129,6 +151,7 @@ class Signup extends Component {
             onChangeText={(text) =>{this.onchange("password", text)}}
             style={styles.textInput}
             placeholder="Password"
+            secureTextEntry={true}
             placeholderTextColor="black"
             maxLength={30}
           ></TextInput>

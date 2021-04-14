@@ -6,11 +6,72 @@ class Items extends Component {
     super(props);
     this.state = {};
   }
+  items=(item)=>{
+    this.props.navigation.navigate("Item",{item:item.join("@!?!")})
+  }
   render() {
+    this.props.route.params.items=[
+      [
+        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
+        "7sheesh",
+        "12",
+        "23"
+      ]
+      ,
+      [
+        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
+        "7sheesh",
+        "12",
+        "23"
+      ]
+      ,
+      [
+        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
+        "7sheesh",
+        "12",
+        "23"
+      ]
+      ,
+      [
+        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
+        "7sheesh",
+        "12",
+        "23"
+      ]
+      ,
+      [
+        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
+        "7sheesh",
+        "12",
+        "23"
+      ]
+      ,
+      [
+        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
+        "7sheesh",
+        "12",
+        "23"
+      ]
+      ,
+      [
+        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
+        "7sheesh",
+        "12",
+        "23"
+      ]
+      ,
+      [
+        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
+        "7sheesh",
+        "12",
+        "23"
+      ]
+      
+    ]
     return (
     <View style={styles.container}>
-        {this.props.route.params.items?.map((item)=>(<View style={styles.item}><TouchableOpacity key={i} onPress={(item)=>this.items(item)}><Image style={styles.img}
-            source={{uri:item[3]}} /></TouchableOpacity><Text style={{textAlign:'center'}}>{item.name}</Text><Text style={{textAlign:'center'}}>{item.amount}</Text><Text style={{textAlign:'center'}}>${item.price}</Text></View>))}
+        {this.props.route.params.items?.map((item,i)=>(<View style={styles.item}  key={i}><TouchableOpacity onPress={()=>this.items(item)}><Image style={styles.img}
+            source={{uri:item[0]}} /></TouchableOpacity><Text style={{textAlign:'center'}}>{item[1]}</Text><Text style={{textAlign:'center'}}>{item[2]}</Text><Text style={{textAlign:'center'}}>${item[3]}</Text></View>))}
     </View>
     )
   }

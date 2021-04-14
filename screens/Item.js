@@ -7,13 +7,16 @@ class Item extends Component {
     this.state = {};
   }
   render() {
-    return <View style={styles.container}></View>;
+    return <View style={styles.container}>
+      <Text>{this.props.route.params.item.split("@!?!")}</Text>
+    </View>;
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'yellow',
   },
 });
 
