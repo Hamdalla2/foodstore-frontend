@@ -40,7 +40,7 @@ class Signup extends Component {
     };
     fetch("http://foodstores.herokuapp.com/add/store", requestOptions)
       .then((response) => response.text())
-      .then((result) => {if(result==="store added"){this.props.navigation.navigate('Signin')}
+      .then((result) => {if(result==="added store"){this.props.navigation.navigate('Signin')}
       else{this.setState({error:'username is already taken!'})}})
       .catch((error)=>console.error(error))
   }

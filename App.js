@@ -25,7 +25,7 @@ class App extends React.Component {
       <SafeAreaProvider>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Landing" >
-            <Stack.Screen name="Home" component={Home} options={{title:'',headerStyle: {backgroundColor: 'orange'}}} />
+            <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
             <Stack.Screen name="Item" component={Item} options={{title:'',headerStyle: {backgroundColor: 'orange'}}} />
             <Stack.Screen name="Items" component={Items} options={{title:'',headerStyle: {backgroundColor: 'orange'}}} />
             <Stack.Screen name="Store" component={Store} options={{title:'',headerStyle: {backgroundColor: 'orange'}}} />
