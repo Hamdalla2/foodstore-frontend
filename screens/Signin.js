@@ -31,7 +31,7 @@ class Signin extends Component {
       .then((response) => response.text())
       .then((result) => {
       if(result?.slice(0,5)==="token"){
-        AsyncStorage.setItem("@token", result)
+        AsyncStorage.setItem("token", this.props.route.params.user+" "+result)
         .then(() => {
           if(this.props.route.params.user==='store'){this.props.navigation.navigate('Store')}else{
           this.props.navigation.navigate('Restaurant')}})}
