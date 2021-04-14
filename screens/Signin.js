@@ -33,7 +33,7 @@ class Signin extends Component {
       if(result?.slice(0,5)==="token"){
         AsyncStorage.setItem("token", this.props.route.params.user+" "+result)
         .then(() => {
-          if(this.props.route.params.user==='store'){this.props.navigation.navigate('Store')}else{
+          if(this.props.route.params.user==='store'){this.props.navigation.navigate('Store',{name:this.state.username})}else{
           this.props.navigation.navigate('Restaurant')}})}
         else{this.setState({error:'wrong username or password!'})}})
       .catch((error)=>console.error(error))

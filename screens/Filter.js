@@ -10,7 +10,7 @@ class Filter extends Component {
   render() {
     return(
     <View style={styles.container}>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Categories")}}>
+      <TouchableOpacity>
           <Text style={styles.button}>
             Comming Soon!
           </Text>

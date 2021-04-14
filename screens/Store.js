@@ -14,7 +14,7 @@ class Store extends Component {
               My Products
             </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Orders')}>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Orders',{name:this.props.route.params.name})}>
             <Text style={styles.button}>
               Orders
             </Text>

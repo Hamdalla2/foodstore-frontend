@@ -2,35 +2,27 @@ import React, { useState, Component } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-class Orders extends Component {
+class Order extends Component {
   constructor(props) {
     super(props);
     this.state = {
+        orders:[],
     };
+  }
+  componentDidMount(){
+    AsyncStorage.getItem("token").then((token)=>{
+      let id=token.split(' ')[2]
+      fetch(`http://foodstores.herokuapp.com/get/restaurant/${id}`)
+      .then((res)=>res.json())
+      .then((res)=>{this.setState({orders:res.orders})})
+      .catch((error)=>console.error(error))})
   }
   render() {
     return(
-      <View style={styles.container}>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Orders",{order:"all"})}}>
-          <Text style={styles.button}>
-            All Orders
-          </Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Order",{order:"waiting"})}}>
-          <Text style={styles.button}>
-            Pending
-          </Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Order",{order:"meat"})}}>
-          <Text style={styles.button}>
-            Accepted
-          </Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Order",{order:"fish"})}}>
-            <Text style={styles.button}>
-            Rejected
-            </Text>
-        </TouchableOpacity>
+    <View style={styles.container}>
+        <View style={styles.container}>
+        {this.state.orders?.map((item,i)=>(<View style={styles.item}  key={i}><Text style={{textAlign:'center'}}>{item[0]}</Text><Text style={{textAlign:'center'}}>{item[1]}</Text><Text style={{textAlign:'center'}}>{item[2]}</Text></View>))}
+        </View>
     </View>
     )
   }
@@ -74,4 +66,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Orders;
+export default Order;

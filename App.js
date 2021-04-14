@@ -22,6 +22,7 @@ import Products from "./screens/Products";
 import Filter from "./screens/Filter";
 import Bought from "./screens/Bought";
 import Orders from "./screens/Orders";
+import Order from "./screens/Order";
 import All from "./screens/All";
 import { Dimensions } from "react-native";
 import { color } from "react-native-reanimated";
@@ -57,9 +58,10 @@ class App extends React.Component {
             <Stack.Screen name="Categories" component={Categories} options={{title:this.name}} />
             <Stack.Screen name="Products" component={Products} options={{title:this.name}} />
             <Stack.Screen name="Filter" component={Filter} options={{headerShown:false}} />
-            <Stack.Screen name="All" component={All} options={{headerShown:false}} />
-            <Stack.Screen name="Bought" component={Bought} options={{headerShown:false}} />
-            <Stack.Screen name="Orders" component={Orders} options={{headerShown:false}} />
+            <Stack.Screen name="All" component={All} options={{title:this.name}} />
+            <Stack.Screen name="Bought" component={Bought} options={{title:this.name}} />
+            <Stack.Screen name="Orders" component={Orders} options={{title:this.name}} />
+            <Stack.Screen name="Order" component={Order} options={{title:this.name}} />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>
