@@ -17,15 +17,39 @@ class Item extends Component {
     this.setState({[name]: value});
   };
   purchase = ()=>{
+    let item=this.props.route.params.item.split("@!?!@")
     if(this.state.cv.length<2||this.state.cv>5){this.setState({error:'wrong cv length'});return}
     if(this.state.expiry.length<4){this.setState({error:'wrong expiry date value'});return}
     if(this.state.holder.length<7){this.setState({error:'holder name too short'});return}
     if(this.state.holder.length<15){this.setState({error:'number too short'});return}
-    if(this.state.amount<1){this.setState({error:'wrong amount value'});return}
-    this.props.navigation.navigate("Restaurant")
+    if(this.state.amount<1||this.state.amount>item[2]){this.setState({error:'wrong amount value'});return}
+    AsyncStorage.getItem("token").then((token)=>{
+    let id=token.split(' ')[2]
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify({
+      token: id,
+      image: item[0],
+      name: item[1],
+      amount: item[2],
+      price: item[3]
+    });
+    var requestOptions = {
+      method: "POST",
+      body: raw,
+      redirect: "follow",
+      headers: myHeaders,
+    };
+    fetch(`http://foodstores.herokuapp.com/buy/item`, requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        if(result==="added"){
+        this.setState({error:"added"});}
+        else{this.setState({error:"error"})}
+      })
+      .catch((error)=>{this.setState({error:"error"});console.error(error)})})
   }
   render() {
-    let item=this.props.route.params.item.split("@!?!@")
     return (
     <View style={styles.container}>
         <TextInput

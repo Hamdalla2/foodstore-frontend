@@ -2,33 +2,28 @@ import React, { useState, Component } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-class Restaurant extends Component {
+class Inventory extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    };
+    }
   }
   render() {
     return(
     <View style={styles.container}>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Stores")}}>
-          <Text style={styles.button}>
-            List of Stores
-          </Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Inventory")}}>
-          <Text style={styles.button}>
-            Inventory
-          </Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Reports")}}>
-          <Text style={styles.button}>
-            Reports
-          </Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{AsyncStorage.removeItem("token"); this.props.navigation.navigate("Landing")}}>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('All')}>
             <Text style={styles.button}>
-              Sign Out
+              All Products
+            </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Categories')}>
+            <Text style={styles.button}>
+              Categories
+            </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Bought')}>
+            <Text style={styles.button}>
+              My Items
             </Text>
         </TouchableOpacity>
     </View>
@@ -75,4 +70,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Restaurant;
+export default Inventory;

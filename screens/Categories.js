@@ -2,7 +2,7 @@ import React, { useState, Component } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-class Restaurant extends Component {
+class Categories extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,24 +11,24 @@ class Restaurant extends Component {
   render() {
     return(
     <View style={styles.container}>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Stores")}}>
+      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Filter",{filter:"vegetable"})}}>
           <Text style={styles.button}>
-            List of Stores
+            Vegetable
           </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Inventory")}}>
+      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Filter",{filter:"fruit"})}}>
           <Text style={styles.button}>
-            Inventory
+            Fruit
           </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Reports")}}>
+      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Filter",{filter:"meat"})}}>
           <Text style={styles.button}>
-            Reports
+            Meat
           </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{AsyncStorage.removeItem("token"); this.props.navigation.navigate("Landing")}}>
+      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Filter",{filter:"fish"})}}>
             <Text style={styles.button}>
-              Sign Out
+            Fish
             </Text>
         </TouchableOpacity>
     </View>
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Restaurant;
+export default Categories;

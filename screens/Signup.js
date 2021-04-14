@@ -73,7 +73,8 @@ class Signup extends Component {
       username: this.state.username,
       password: this.state.password,
       name: this.state.name,
-      address: this.state.address
+      address: this.state.address,
+      items: []
     });
     var requestOptions = {
       method: "POST",

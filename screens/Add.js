@@ -17,10 +17,12 @@ class Signin extends Component {
     this.setState({[name]: value});
   };
   add = () => {
-    AsyncStorage.getItem("@token")
+    AsyncStorage.getItem("token")
         .then(token=> {
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
             var data = {
-                token: token,
+                token: token.split(" ")[2],
                 name: this.state.name,
                 image: this.state.image,
                 price: this.state.price,
@@ -28,13 +30,13 @@ class Signin extends Component {
             }
             var options = {
                 method: "POST",
-                body: data,
+                body: JSON.stringify(data),
                 redirect: "follow",
                 headers: myHeaders,
             }
             fetch("http://foodstores.herokuapp.com/add/item", options)
                 .then((response) => response.text())
-                .then((result) => {if(result==="added"){this.props.navigation.navigate('Store')}
+                .then((result) => {if(result==="added"){this.setState({error:"added"})}
                 else{this.setState({error:'something went wrong'})}})
                 .catch((error)=>this.setState({error:'something went wrong'}))
             })

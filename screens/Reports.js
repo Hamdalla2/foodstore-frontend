@@ -2,26 +2,36 @@ import React, { useState, Component } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-class Restaurant extends Component {
+class Reports extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      stores:[],
     };
+  }
+  componentDidMount(){
+    fetch("http://foodstores.herokuapp.com/get/stores")
+    .then((res)=>res.json())
+    .then((res)=>{this.setState({stores:res})})
+    .catch((error)=>console.error(error))
+  }
+  items=(item)=>{
+    this.props.navigation.navigate("Items",{items:item.items})
   }
   render() {
     return(
     <View style={styles.container}>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Stores")}}>
+      <TouchableOpacity onPress={()=>{}}>
           <Text style={styles.button}>
             List of Stores
           </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Inventory")}}>
+      <TouchableOpacity onPress={()=>{}}>
           <Text style={styles.button}>
             Inventory
           </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Reports")}}>
+      <TouchableOpacity onPress={()=>{}}>
           <Text style={styles.button}>
             Reports
           </Text>
@@ -75,4 +85,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Restaurant;
+export default Reports;

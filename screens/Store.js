@@ -9,11 +9,21 @@ class Store extends Component {
   }
   render() {
     return <View style={styles.container}> 
-      <TouchableOpacity onPress={()=>this.props.navigation.navigate('Add')}>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Products')}>
             <Text style={styles.button}>
-              Add Item
+              My Products
             </Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Orders')}>
+            <Text style={styles.button}>
+              Orders
+            </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Stores")}}>
+          <Text style={styles.button}>
+            List of Stores
+          </Text>
+      </TouchableOpacity>
         <TouchableOpacity onPress={()=>{AsyncStorage.removeItem("token"); this.props.navigation.navigate("Landing")}}>
             <Text style={styles.button}>
               Sign Out
