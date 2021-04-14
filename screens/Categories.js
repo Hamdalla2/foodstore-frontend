@@ -1,6 +1,5 @@
 import React, { useState, Component } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class Categories extends Component {
   constructor(props) {
