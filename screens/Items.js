@@ -7,67 +7,9 @@ class Items extends Component {
     this.state = {};
   }
   items=(item)=>{
-    this.props.navigation.navigate("Item",{item:item.join("@!?!")})
+    this.props.navigation.navigate("Item",{item:item.join("@!?!@")})
   }
   render() {
-    this.props.route.params.items=[
-      [
-        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
-        "7sheesh",
-        "12",
-        "23"
-      ]
-      ,
-      [
-        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
-        "7sheesh",
-        "12",
-        "23"
-      ]
-      ,
-      [
-        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
-        "7sheesh",
-        "12",
-        "23"
-      ]
-      ,
-      [
-        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
-        "7sheesh",
-        "12",
-        "23"
-      ]
-      ,
-      [
-        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
-        "7sheesh",
-        "12",
-        "23"
-      ]
-      ,
-      [
-        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
-        "7sheesh",
-        "12",
-        "23"
-      ]
-      ,
-      [
-        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
-        "7sheesh",
-        "12",
-        "23"
-      ]
-      ,
-      [
-        "https://gololy.com/gallery/emad-hedar/abo-7sheesh-1.jpg",
-        "7sheesh",
-        "12",
-        "23"
-      ]
-      
-    ]
     return (
     <View style={styles.container}>
         {this.props.route.params.items?.map((item,i)=>(<View style={styles.item}  key={i}><TouchableOpacity onPress={()=>this.items(item)}><Image style={styles.img}
