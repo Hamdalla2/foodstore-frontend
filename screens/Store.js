@@ -1,5 +1,6 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState, Component } from "react";
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Button } from "react-native";
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Button, YellowBox } from "react-native";
 
 class Store extends Component {
   constructor(props) {
@@ -13,6 +14,11 @@ class Store extends Component {
               Add Item
             </Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={()=>{AsyncStorage.removeItem("token"); this.props.navigation.navigate("Landing")}}>
+            <Text style={styles.button}>
+              Sign Out
+            </Text>
+        </TouchableOpacity>
     </View>;
   }
 }
@@ -20,6 +26,7 @@ class Store extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'yellow',
   },
   button: {
     backgroundColor: "orange",
