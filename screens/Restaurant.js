@@ -27,7 +27,7 @@ class Restaurant extends Component {
             </Text>
         </TouchableOpacity>
       <View style={styles.display}>
-      {this.state.stores?.map((item,i)=>(<TouchableOpacity key={i} onPress={(item)=>this.items(item)}><Image style={styles.img}
+      {this.state.stores?.map((item,i)=>(<TouchableOpacity key={i} onPress={()=>this.items(item)}><Image style={styles.img}
             source={{uri:item.image}} /><Text>{item.name}</Text></TouchableOpacity>))}
       </View>
     </View>

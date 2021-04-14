@@ -17,18 +17,23 @@ class Signin extends Component {
     this.setState({[name]: value});
   };
   add = () => {
-    AsyncStorage.getItem("@token")
+    
+    AsyncStorage.getItem("token")
         .then(token=> {
+          
             var data = {
-                token: token,
+                token:token.split(' ')[2],
                 name: this.state.name,
                 image: this.state.image,
                 price: this.state.price,
-                amount: this.state.amount
+                amount: this.state.amount,
             }
+            console.log(data)
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
             var options = {
                 method: "POST",
-                body: data,
+                body: JSON.stringify(data),
                 redirect: "follow",
                 headers: myHeaders,
             }
