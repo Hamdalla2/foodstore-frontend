@@ -15,7 +15,7 @@ class Stores extends Component {
     .catch((error)=>console.error(error))
   }
   items=(item)=>{
-    this.props.navigation.navigate("Items",{items:item.items})
+    this.props.navigation.navigate("Items",{items:item.items,store:item.id})
   }
   render() {
     return(

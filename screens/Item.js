@@ -18,6 +18,7 @@ class Item extends Component {
   };
   purchase = ()=>{
     let item=this.props.route.params.item.split("@!?!@")
+    let store=this.props.route.params.store
     if(this.state.cv.length<2||this.state.cv>5){this.setState({error:'wrong cv length'});return}
     if(this.state.expiry.length<4){this.setState({error:'wrong expiry date value'});return}
     if(this.state.holder.length<7){this.setState({error:'holder name too short'});return}
@@ -29,6 +30,7 @@ class Item extends Component {
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify({
       token: id,
+      store: store,
       image: item[0],
       name: item[1],
       amount: item[2],

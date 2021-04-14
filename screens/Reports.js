@@ -6,39 +6,29 @@ class Reports extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stores:[],
     };
-  }
-  componentDidMount(){
-    fetch("http://foodstores.herokuapp.com/get/stores")
-    .then((res)=>res.json())
-    .then((res)=>{this.setState({stores:res})})
-    .catch((error)=>console.error(error))
-  }
-  items=(item)=>{
-    this.props.navigation.navigate("Items",{items:item.items})
   }
   render() {
     return(
     <View style={styles.container}>
-      <TouchableOpacity onPress={()=>{}}>
+      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Products")}}>
           <Text style={styles.button}>
-            List of Stores
+          All Product
           </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={()=>{}}>
           <Text style={styles.button}>
-            Inventory
+          Low Quantity
           </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={()=>{}}>
           <Text style={styles.button}>
-            Reports
+          Unavailable 
           </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{AsyncStorage.removeItem("token"); this.props.navigation.navigate("Landing")}}>
+      <TouchableOpacity onPress={()=>{}}>
             <Text style={styles.button}>
-              Sign Out
+            Rotten
             </Text>
         </TouchableOpacity>
     </View>

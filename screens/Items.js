@@ -7,7 +7,7 @@ class Items extends Component {
     this.state = {};
   }
   items=(item)=>{
-    this.props.navigation.navigate("Item",{item:item.join("@!?!@")})
+    this.props.navigation.navigate("Item",{item:item.join("@!?!@"),store:this.props.route.params.store})
   }
   render() {
     return (
