@@ -15,14 +15,14 @@ class AllItems extends Component {
     .then((res)=>{console.log(res);this.setState({items:res})})
     .catch((error)=>console.error(error))
   }
-  items=(store)=>{
-    this.props.navigation.navigate("Item",{item:store.items.join("@!?!@"),store:store.id})
+  items=(store,item)=>{
+    this.props.navigation.navigate("Item",{item:item.join("@!?!@"),store:store.id})
   }
   render() {
     return(
     <View style={styles.container}>
         <View style={styles.container}>
-        {this.state.items?.map((store,i)=>store.items.map((item,e)=>(<View style={styles.item}  key={i+''+e}><TouchableOpacity onPress={()=>this.items(store)}><Image style={styles.img}
+        {this.state.items?.map((store,i)=>store.items.map((item,e)=>(<View style={styles.item}  key={i+''+e}><TouchableOpacity onPress={()=>this.items(store,item)}><Image style={styles.img}
             source={{uri:item[0]}} /></TouchableOpacity><Text style={{textAlign:'center'}}>{item[1]}</Text><Text style={{textAlign:'center'}}>{item[2]}</Text><Text style={{textAlign:'center'}}>${item[3]}</Text></View>)))}
         </View>
     </View>
