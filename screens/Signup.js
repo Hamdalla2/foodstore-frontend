@@ -1,6 +1,7 @@
 import React, { useState, Component } from "react";
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button } from "react-native";
-import UploadButton from "@rpldy/upload-button";
+let allowedImages = {"jpg":true,"jpeg":true,"gif":true,"jfif":true,"png":true,"webp":true,"bmp":true}
+
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -16,30 +17,12 @@ class Signup extends Component {
   onchange = (name, value) => {
     this.setState({[name]: value});
   };
-//   uploadImage = (e) => {
-//     const formData = new FormData()
-//     formData.append('file', e.target.files[0])
-//     formData.append('upload_preset', 'pqcz20rh')
-
-//     const requestOptions = {
-//         method: 'POST',
-//         body: formData
-//     };
-//     fetch('	https://api.cloudinary.com/v1_1/dzjchtsxn/image/upload', requestOptions)
-//         .then(response => response.json())
-//         .then(data => {
-//             console.log(data)
-//             setImage(data.secure_url)
-
-//         });
-
-// }
   signupstore=()=>{
     if(this.state.username.length<2){this.setState({error:'username too short'});return;}
     if(this.state.password.length<2){this.setState({error:'password too short'});return;}
     if(this.state.name.length<2){this.setState({error:'name too short'});return;}
     if(this.state.address.length<2){this.setState({error:'address too short'});return;}
-    if(this.state.image.length<9){this.setState({error:'imagelink too short'});return;}
+    if(!allowedImages[this.state.image.slice(-3).toLowerCase()]){this.setState({error:'insert a valid image link'});return;}
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify({
@@ -49,7 +32,7 @@ class Signup extends Component {
       address: this.state.address,
       image: this.state.image,
       items: [],
-      orders:[]
+      orders:{allowed:[],pending:[],rejected:[]}
     });
     var requestOptions = {
       method: "POST",

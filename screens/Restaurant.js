@@ -26,7 +26,7 @@ class Restaurant extends Component {
             Reports
           </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{AsyncStorage.removeItem("token"); this.props.navigation.navigate("Landing")}}>
+      <TouchableOpacity onPress={()=>{AsyncStorage.multiRemove(["token","name"]); this.props.navigation.navigate("Landing")}}>
             <Text style={styles.button}>
               Sign Out
             </Text>

@@ -2,7 +2,7 @@ import React, { useState, Component } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-class All extends Component {
+class AllItems extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,18 +12,18 @@ class All extends Component {
   componentDidMount(){
     fetch(`http://foodstores.herokuapp.com/get/stores`)
     .then((res)=>res.json())
-    .then((res)=>{this.setState({items:res})})
+    .then((res)=>{console.log(res);this.setState({items:res})})
     .catch((error)=>console.error(error))
   }
-  items=(item)=>{
-    this.props.navigation.navigate("Item",{item:item.join("@!?!@")})
+  items=(store)=>{
+    this.props.navigation.navigate("Item",{item:store.items.join("@!?!@"),store:store.id})
   }
   render() {
     return(
     <View style={styles.container}>
         <View style={styles.container}>
-        {this.state.items?.map((item,i)=>(<View style={styles.item}  key={i}><TouchableOpacity onPress={()=>this.items(item.items)}><Image style={styles.img}
-            source={{uri:item.items[0]}} /></TouchableOpacity><Text style={{textAlign:'center'}}>{item.items[1]}</Text><Text style={{textAlign:'center'}}>{item.items[2]}</Text><Text style={{textAlign:'center'}}>${item.items[3]}</Text></View>))}
+        {this.state.items?.map((store,i)=>store.items.map((item,e)=>(<View style={styles.item}  key={i+''+e}><TouchableOpacity onPress={()=>this.items(store)}><Image style={styles.img}
+            source={{uri:item[0]}} /></TouchableOpacity><Text style={{textAlign:'center'}}>{item[1]}</Text><Text style={{textAlign:'center'}}>{item[2]}</Text><Text style={{textAlign:'center'}}>${item[3]}</Text></View>)))}
         </View>
     </View>
     )
@@ -53,11 +53,11 @@ const styles = StyleSheet.create({
   item: {
     flex: 1,
     display:"flex",
-    justifyContent:"flex-start",
+    justifyContent:"space-between",
     alignItems:"flex-start",
     flexDirection:'row',
     width:300,
-    height:600,
+    height:100,
     margin:20,
   },
   img: {
@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default All;
+export default AllItems;

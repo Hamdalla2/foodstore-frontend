@@ -5,28 +5,33 @@ import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Button, Yell
 class Store extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      name:'',
+    };
+  }
+  componentDidMount(){
+    AsyncStorage.getItem('name').then((name)=>this.setState({name}))
   }
   render() {
     return <View style={styles.container}> 
-        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Products')}>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('MyItems')}>
             <Text style={styles.button}>
               My Products
             </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Orders',{name:this.props.route.params.name})}>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Orders',{name:this.state.name})}>
             <Text style={styles.button}>
               Orders
             </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Stores")}}>
           <Text style={styles.button}>
-            List of Stores
+              List of Stores
           </Text>
       </TouchableOpacity>
-        <TouchableOpacity onPress={()=>{AsyncStorage.removeItem("token"); this.props.navigation.navigate("Landing")}}>
+        <TouchableOpacity onPress={()=>{AsyncStorage.multiRemove(["token","name"]); this.props.navigation.navigate("Landing")}}>
             <Text style={styles.button}>
-              Sign Out
+                Sign Out
             </Text>
         </TouchableOpacity>
     </View>;

@@ -2,7 +2,7 @@ import React, { useState, Component } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-class Orders extends Component {
+class MyItems extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,9 +14,9 @@ class Orders extends Component {
     let id=token.split(' ')[2]
     fetch(`http://foodstores.herokuapp.com/get/store/${id}`)
     .then((res)=>res.json())
-    .then((res)=>{this.setState({items:res.items})})
+    .then((res)=>{console.log(res);this.setState({items:res.items})})
     .catch((error)=>console.error(error))})
-  }
+  }p
   render() {
     return(
     <View style={styles.container}>
@@ -26,7 +26,7 @@ class Orders extends Component {
             </Text>
         </TouchableOpacity>
         <View style={styles.container}>
-        {this.state.items?.map((item,i)=>(<View style={styles.item}  key={i}><TouchableOpacity onPress={()=>this.items(item)}><Image style={styles.img}
+        {this.state.items?.map((item,i)=>(<View style={styles.item}  key={i}><TouchableOpacity><Image style={styles.img}
             source={{uri:item[0]}} /></TouchableOpacity><Text style={{textAlign:'center'}}>{item[1]}</Text><Text style={{textAlign:'center'}}>{item[2]}</Text><Text style={{textAlign:'center'}}>${item[3]}</Text></View>))}
         </View>
     </View>
@@ -57,11 +57,11 @@ const styles = StyleSheet.create({
   item: {
     flex: 1,
     display:"flex",
-    justifyContent:"flex-start",
+    justifyContent:"space-between",
     alignItems:"flex-start",
     flexDirection:'row',
     width:300,
-    height:600,
+    height:100,
     margin:20,
   },
   img: {
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Orders;
+export default MyItems;

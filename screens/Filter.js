@@ -15,6 +15,11 @@ class Filter extends Component {
             Comming Soon!
           </Text>
       </TouchableOpacity>
+      <TouchableOpacity>
+          <Text style={styles.button} onPress={()=>this.props.navigation.navigate("Categories")}>
+            Back
+          </Text>
+      </TouchableOpacity>
     </View>
     )
   }

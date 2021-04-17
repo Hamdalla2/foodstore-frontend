@@ -11,25 +11,25 @@ class Reports extends Component {
   render() {
     return(
     <View style={styles.container}>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Products")}}>
+      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Report",{filter:"all"})}}>
           <Text style={styles.button}>
-          All Product
+          All Reports
           </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{}}>
-          <Text style={styles.button}>
+      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Report",{filter:"low"})}}>          
+        <Text style={styles.button}>
           Low Quantity
           </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{}}>
-          <Text style={styles.button}>
+      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Report",{filter:"none"})}}>          
+        <Text style={styles.button}>
           Unavailable 
           </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{}}>
-            <Text style={styles.button}>
+      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Report",{filter:"rotten"})}}>
+          <Text style={styles.button}>
             Rotten
-            </Text>
+          </Text>
         </TouchableOpacity>
     </View>
     )

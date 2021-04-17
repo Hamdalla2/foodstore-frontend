@@ -11,7 +11,7 @@ class Inventory extends Component {
   render() {
     return(
     <View style={styles.container}>
-        <TouchableOpacity onPress={()=>this.props.navigation.navigate('All')}>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('AllItems')}>
             <Text style={styles.button}>
               All Products
             </Text>

@@ -10,9 +10,14 @@ class Report extends Component {
   render() {
     return(
     <View style={styles.container}>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Categories")}}>
+      <TouchableOpacity onPress={()=>{}}>
           <Text style={styles.button}>
             Comming Soon!
+          </Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Reports")}}>
+          <Text style={styles.button}>
+            Back
           </Text>
       </TouchableOpacity>
     </View>

@@ -11,22 +11,17 @@ class Orders extends Component {
   render() {
     return(
       <View style={styles.container}>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Orders",{order:"all"})}}>
-          <Text style={styles.button}>
-            All Orders
-          </Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Order",{order:"waiting"})}}>
+      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Order",{filter:"pending"})}}>
           <Text style={styles.button}>
             Pending
           </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Order",{order:"meat"})}}>
+      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Order",{filter:"allowed"})}}>
           <Text style={styles.button}>
             Accepted
           </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Order",{order:"fish"})}}>
+      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Order",{filter:"rejected"})}}>
             <Text style={styles.button}>
             Rejected
             </Text>

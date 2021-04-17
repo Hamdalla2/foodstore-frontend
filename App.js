@@ -19,12 +19,12 @@ import Inventory from "./screens/Inventory";
 import Reports from "./screens/Reports";
 import Report from "./screens/Report";
 import Categories from "./screens/Categories";
-import Products from "./screens/Products";
+import MyItems from "./screens/MyItems";
 import Filter from "./screens/Filter";
 import Bought from "./screens/Bought";
 import Orders from "./screens/Orders";
 import Order from "./screens/Order";
-import All from "./screens/All";
+import AllItems from "./screens/AllItems";
 import { Dimensions } from "react-native";
 import { color } from "react-native-reanimated";
 import NativeUploady, {
@@ -58,9 +58,9 @@ class App extends React.Component {
             <Stack.Screen name="Reports" component={Reports} options={{title:this.name}} />
             <Stack.Screen name="Report" component={Report} options={{title:this.name}} />
             <Stack.Screen name="Categories" component={Categories} options={{title:this.name}} />
-            <Stack.Screen name="Products" component={Products} options={{title:this.name}} />
-            <Stack.Screen name="Filter" component={Filter} options={{headerShown:false}} />
-            <Stack.Screen name="All" component={All} options={{title:this.name}} />
+            <Stack.Screen name="MyItems" component={MyItems} options={{title:this.name}} />
+            <Stack.Screen name="Filter" component={Filter} options={{title:this.name}} />
+            <Stack.Screen name="AllItems" component={AllItems} options={{title:this.name}} />
             <Stack.Screen name="Bought" component={Bought} options={{title:this.name}} />
             <Stack.Screen name="Orders" component={Orders} options={{title:this.name}} />
             <Stack.Screen name="Order" component={Order} options={{title:this.name}} />

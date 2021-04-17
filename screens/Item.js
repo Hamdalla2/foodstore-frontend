@@ -1,5 +1,6 @@
 import React, { useState, Component } from "react";
-import { StyleSheet, Text, View, Image, FlatList, Button } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class Item extends Component {
   constructor(props) {
@@ -19,10 +20,10 @@ class Item extends Component {
   purchase = ()=>{
     let item=this.props.route.params.item.split("@!?!@")
     let store=this.props.route.params.store
-    if(this.state.cv.length<2||this.state.cv>5){this.setState({error:'wrong cv length'});return}
+    if(this.state.cv.length<2||this.state.cv.length>5){this.setState({error:'wrong cv length'});return}
     if(this.state.expiry.length<4){this.setState({error:'wrong expiry date value'});return}
     if(this.state.holder.length<7){this.setState({error:'holder name too short'});return}
-    if(this.state.holder.length<15){this.setState({error:'number too short'});return}
+    if(this.state.number.length<15){this.setState({error:'card number too short'});return}
     if(this.state.amount<1||this.state.amount>item[2]){this.setState({error:'wrong amount value'});return}
     AsyncStorage.getItem("token").then((token)=>{
     let id=token.split(' ')[2]
@@ -33,7 +34,7 @@ class Item extends Component {
       store: store,
       image: item[0],
       name: item[1],
-      amount: item[2],
+      amount: this.state.amount,
       price: item[3]
     });
     var requestOptions = {
