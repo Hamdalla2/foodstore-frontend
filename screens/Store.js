@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState, Component } from "react";
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Button, YellowBox } from "react-native";
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Button } from "react-native";
 
 class Store extends Component {
   constructor(props) {
@@ -24,11 +24,6 @@ class Store extends Component {
               Orders
             </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Stores")}}>
-          <Text style={styles.button}>
-              List of Stores
-          </Text>
-      </TouchableOpacity>
         <TouchableOpacity onPress={()=>{AsyncStorage.multiRemove(["token","name"]); this.props.navigation.navigate("Landing")}}>
             <Text style={styles.button}>
                 Sign Out
