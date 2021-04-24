@@ -26,7 +26,7 @@ class Store extends Component {
         </TouchableOpacity>
         <TouchableOpacity onPress={()=>{AsyncStorage.multiRemove(["token","name"]); this.props.navigation.navigate("Landing")}}>
             <Text style={styles.button}>
-                Sign Out
+              Sign Out
             </Text>
         </TouchableOpacity>
     </View>;
