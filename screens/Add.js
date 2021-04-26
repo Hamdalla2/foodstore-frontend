@@ -10,6 +10,7 @@ class Signin extends Component {
     image: "",
     price: "",
     amount: "",
+    type: "",
     error: "",
     };
   }
