@@ -1,6 +1,13 @@
 import React, { useState, Component } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button } from "react-native";
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+
+var radio_props = [
+  {label: 'Meat', value: 0 },
+  {label: 'Fruit', value: 1 },
+  {label: 'Vegetable', value: 2 },
+];
 
 class Signin extends Component {
   constructor(props) {
@@ -76,6 +83,15 @@ class Signin extends Component {
           placeholder="Amount"
           placeholderTextColor="black"
         ></TextInput>
+        <RadioForm
+          radio_props={radio_props}
+          initial={0}
+          formHorizontal={true}
+          labelHorizontal={false}
+          buttonColor={'#2196f3'}
+          animation={true}
+          onPress={(value) => {this.setState({type:value})}}
+        />
         <TouchableOpacity onPress={this.add}>
             <Text style={styles.button}>
               Add
