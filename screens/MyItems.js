@@ -14,7 +14,7 @@ class MyItems extends Component {
     let id=token.split(' ')[2]
     fetch(`http://foodstores.herokuapp.com/get/store/${id}`)
     .then((res)=>res.json())
-    .then((res)=>{console.log(res);this.setState({items:res.items})})
+    .then((res)=>{this.setState({items:res.items})})
     .catch((error)=>console.error(error))})
   }p
   render() {

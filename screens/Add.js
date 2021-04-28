@@ -7,6 +7,11 @@ var radio_props = [
   {label: 'Meat', value: 0 },
   {label: 'Fruit', value: 1 },
   {label: 'Vegetable', value: 2 },
+  {label: 'Fish', value: 3 },
+  {label: 'Beans', value: 4 },
+  {label: 'Dairy', value: 5 },
+  {label: 'Chicken', value: 6 },
+  {label: 'Spices', value: 7 },
 ];
 
 class Signin extends Component {
@@ -90,7 +95,7 @@ class Signin extends Component {
           labelHorizontal={false}
           buttonColor={'#2196f3'}
           animation={true}
-          onPress={(value) => {this.setState({type:value})}}
+          onPress={(value) => {this.setState({type:radio_props[value]["label"]})}}
         />
         <TouchableOpacity onPress={this.add}>
             <Text style={styles.button}>
