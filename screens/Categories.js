@@ -30,6 +30,11 @@ class Categories extends Component {
             Fish
             </Text>
         </TouchableOpacity>
+      <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Filter",{filter:"beans"})}}>
+            <Text style={styles.button}>
+            Beans
+            </Text>
+      </TouchableOpacity>
     </View>
     )
   }
