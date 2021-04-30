@@ -4,14 +4,14 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button } from "rea
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 var radio_props = [
-  {label: 'Meat', value: 0 },
-  {label: 'Fruit', value: 1 },
-  {label: 'Vegetable', value: 2 },
-  {label: 'Fish', value: 3 },
-  {label: 'Beans', value: 4 },
-  {label: 'Dairy', value: 5 },
-  {label: 'Chicken', value: 6 },
-  {label: 'Spices', value: 7 },
+  {label: 'meat', value: 0 },
+  {label: 'fruit', value: 1 },
+  {label: 'vegetable', value: 2 },
+  {label: 'fish', value: 3 },
+  {label: 'beans', value: 4 },
+  {label: 'dairy', value: 5 },
+  {label: 'chicken', value: 6 },
+  {label: 'spices', value: 7 },
 ];
 
 class Signin extends Component {
